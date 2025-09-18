@@ -1,0 +1,8 @@
+<h1>All Rides</h1>
+<ul>
+  {% for ride in rides %}
+    <li>
+      <a href="{% url 'detail' ride.id %}">{{ ride.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
