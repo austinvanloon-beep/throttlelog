@@ -1,8 +1,21 @@
-<h1>All Rides</h1>
-<ul>
-  {% for ride in rides %}
-    <li>
-      <a href="{% url 'detail' ride.id %}">{{ ride.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>All Rides</h1>
+
+  {% if user.is_authenticated %}
+    <a href="{% url 'rides_create' %}">Add Ride</a>
+  {% else %}
+    <p><a href="{% url 'login' %}">Log in</a> to add rides.</p>
+  {% endif %}
+
+  <ul>
+    {% for ride in rides %}
+      <li>
+        <a href="{% url 'detail' ride.id %}">{{ ride.title }}</a>
+      </li>
+    {% empty %}
+      <li>No rides yet!</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

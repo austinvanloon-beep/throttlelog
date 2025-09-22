@@ -1,8 +1,17 @@
-<h1>{{ ride.title }}</h1>
-<p>Mileage: {{ ride.mileage }}</p>
-<p>Bike: {{ ride.bike_make }} {{ ride.bike_model }}</p>
-<p>Attractions: {{ ride.attractions }}</p>
-<p>Notes: {{ ride.notes }}</p>
-<p>Date: {{ ride.date }}</p>
+{% extends 'base.html' %}
 
-<a href="/rides/">Back to all rides</a>
+{% block content %}
+  <h1>{{ ride.title }}</h1>
+  <p>Mileage: {{ ride.mileage }}</p>
+  <p>Bike: {{ ride.bike_make }} {{ ride.bike_model }}</p>
+  <p>Attractions: {{ ride.attractions }}</p>
+  <p>Notes: {{ ride.notes }}</p>
+  <p>Date: {{ ride.date }}</p>
+
+  {% if user == ride.user %}
+    <a href="{% url 'rides_update' ride.id %}">Edit</a>
+    <a href="{% url 'rides_delete' ride.id %}">Delete</a>
+  {% endif %}
+
+  <a href="{% url 'index' %}">Back to all rides</a>
+{% endblock %}

@@ -7,7 +7,7 @@ from django.views.generic.edit import UpdateView, DeleteView
 
 
 def rides_index(request):
-    rides = Ride.objects.all()
+    rides = Ride.objects.filter(user=request.user)
     return render(request, 'rides/index.html', { 'rides': rides })
 
 
@@ -32,4 +32,3 @@ class RideDelete(LoginRequiredMixin, DeleteView):
     model = Ride
     success_url = '/rides/'
 
-    
