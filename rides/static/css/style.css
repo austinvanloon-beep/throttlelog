@@ -1,4 +1,3 @@
-
 :root {
   --primary-color: #d32f2f;
   --secondary-color: #222;
@@ -13,36 +12,19 @@ body {
   margin: 0;
   padding: 0;
   font-family: var(--font-body);
+  text-align: center;
 }
-
 
 .hero {
   position: relative;
-  background: url("/static/images/background.png") no-repeat center center/cover;
-  color: white;
   text-align: center;
-  padding: 4em 1em;
+  padding: 2em 1em;
 }
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 0;
+.hero img.logo {
+  height: 80px;
+  display: block;
+  margin: 0 auto;
 }
-.hero h1, .hero p {
-  position: relative;
-  z-index: 1;
-}
-.hero h1 {
-  font-family: var(--font-heading);
-}
-.hero p {
-  font-family: var(--font-body);
-}
-
-
-
 
 nav {
   background: linear-gradient(90deg, #111, #222);
@@ -67,14 +49,9 @@ nav a:hover {
   text-shadow: 0px 0px 5px var(--primary-color);
 }
 
-
-
 h1, h2, h3, p, a {
   text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }
-
-
-
 
 ul {
   list-style: none;
@@ -98,8 +75,6 @@ li a:hover {
   text-decoration: underline;
 }
 
-
-
 button, input[type="submit"], .btn {
   background: var(--primary-color);
   color: white;
@@ -113,25 +88,12 @@ button, input[type="submit"], .btn {
 button:hover, input[type="submit"]:hover, .btn:hover {
   background: #b71c1c;
 }
-.edit-btn {
-  background: #1976d2;
-}
-.edit-btn:hover {
-  background: #1565c0;
-}
-.delete-btn {
-  background: #c62828;
-}
-.delete-btn:hover {
-  background: #b71c1c;
-}
-.add-btn {
-  background: #388e3c;
-}
-.add-btn:hover {
-  background: #2e7d32;
-}
-
+.edit-btn { background: #1976d2; }
+.edit-btn:hover { background: #1565c0; }
+.delete-btn { background: #c62828; }
+.delete-btn:hover { background: #b71c1c; }
+.add-btn { background: #388e3c; }
+.add-btn:hover { background: #2e7d32; }
 
 .ride-grid {
   display: grid;
@@ -165,10 +127,6 @@ button:hover, input[type="submit"]:hover, .btn:hover {
   color: #bbb;
 }
 
-
-
-
-
 .ride-detail {
   max-width: 700px;
   margin: 2rem auto;
@@ -180,7 +138,6 @@ button:hover, input[type="submit"]:hover, .btn:hover {
 .ride-detail h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  text-align: center;
   color: #f5f5f5;
 }
 .ride-detail img {
@@ -193,53 +150,53 @@ button:hover, input[type="submit"]:hover, .btn:hover {
   font-size: 1rem;
   color: #ddd;
 }
-.ride-actions {
-  margin-top: 1rem;
-  text-align: center;
-}
-.ride-actions .btn {
-  margin: 0.3rem;
-}
+.ride-actions { margin-top: 1rem; }
+.ride-actions .btn { margin: 0.3rem; }
 
-
-
-form {
+.auth-form {
   max-width: 400px;
-  margin: 2rem auto;
+  margin: 3rem auto;
   padding: 2rem;
-  background: #1c1c1c;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
-  color: #f5f5f5;
+  background: rgba(28, 28, 28, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.7);
 }
-form h1 {
-  text-align: center;
-  margin-bottom: 1rem;
+.auth-form h1 {
+  font-family: var(--font-heading);
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
 }
-form button {
+.auth-form input {
   width: 100%;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.6rem;
+  border-radius: 5px;
+  border: none;
+  background: #2a2a2a;
+  color: #fff;
+}
+.auth-form input:focus {
+  outline: none;
+  border: 2px solid var(--primary-color);
+}
+.auth-form button {
+  width: 100%;
   background: var(--primary-color);
 }
-form button:hover {
+.auth-form button:hover {
   background: #b71c1c;
 }
-.help-text {
-  display: block;
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
+
+footer {
+  text-align: center;
+  padding: 1em;
+  background: #111;
   color: #bbb;
-}
-
-
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  margin-top: 2em;
 }
 
 .form-container {
-  max-width: 500px;
+  max-width: 400px;
   margin: 3rem auto;
   padding: 2rem;
   background: rgba(28, 28, 28, 0.9);
@@ -254,28 +211,38 @@ form button:hover {
   color: var(--primary-color);
 }
 
-.form-fields p {
-  margin: 1rem 0;
+.form-fields label {
+  display: block;
+  margin: 0.5rem 0 0.3rem;
+  font-weight: bold;
+  color: f0db4f;
   text-align: left;
-  font-size: 1rem;
-  color: #ddd;
 }
 
-.form-fields input,
-.form-fields textarea,
-.form-fields select {
+.form-fields input {
   width: 100%;
   padding: 0.6rem;
   border-radius: 5px;
   border: none;
-  margin-top: 0.3rem;
+  margin-bottom: 1rem;
   background: #2a2a2a;
   color: #fff;
 }
 
-.form-fields input:focus,
-.form-fields textarea:focus,
-.form-fields select:focus {
-  outline: none;
-  border: 2px solid var(--primary-color);
+
+label {
+  color: #f0db4f;
+  font-weight: bold;
+}
+
+
+.about-container {
+  max-width: 700px;
+  margin: 3rem auto;
+  text-align: center;
+  background: rgba(28, 28, 28, 0.9);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  color: #f5f5f5;
 }

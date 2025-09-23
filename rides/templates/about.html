@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="about-container">
+  <h1>What is ThrottleLog?</h1>
+  <p>Log your rides, discover new routes, and get inspired by the motorcycle community.</p>
+</div>
+
+<div class="about-container">
+  <div class="ride-grid">
+    <div class="ride-card">
+      <h2>Log Your Rides</h2>
+      <p>Track mileage, bike details, attractions, notes, and more—everything in one place.</p>
+    </div>
+    <div class="ride-card">
+      <h2>Discover Community</h2>
+      <p>Browse publicly shared rides from other riders and find your next favorite route.</p>
+    </div>
+    <div class="ride-card">
+      <h2>Map Previews</h2>
+      <p>Optional map previews let you visualize locations right on the ride detail page.</p>
+    </div>
+  </div>
+
+  {% if not user.is_authenticated %}
+    <div style="text-align:center; margin-top:2rem;">
+      <a class="btn add-btn" href="{% url 'signup' %}">Create an account</a>
+      <a class="btn" href="{% url 'login' %}" style="margin-left:.5rem;">Log in</a>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

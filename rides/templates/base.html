@@ -8,7 +8,12 @@
 </head>
 
 <body>
+  <header class="hero">
+    <img src="{% static 'images/logo.png' %}" alt="ThrottleLog Logo" class="logo">
+  </header>
+
   <nav>
+    <a href="{% url 'about' %}">About</a>
     <a href="{% url 'community' %}">Community</a>
     {% if user.is_authenticated %}
       <a href="{% url 'index' %}">My Rides</a>
@@ -23,5 +28,9 @@
   <hr>
 
   {% block content %}{% endblock %}
+
+  <footer>
+    <p>&copy; 2025 ThrottleLog. All rights reserved.</p>
+  </footer>
 </body>
 </html>

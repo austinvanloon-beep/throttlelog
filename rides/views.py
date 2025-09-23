@@ -3,9 +3,9 @@ from .models import Ride
 from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView, DeleteView
+from django.shortcuts import render, redirect
 
 
-# rides private to user
 def rides_index(request):
     if request.user.is_authenticated:
         rides = Ride.objects.filter(user=request.user)
@@ -14,10 +14,6 @@ def rides_index(request):
     return render(request, 'rides/index.html', { 'rides': rides })
 
 
-# rides public to all users
-# def rides_index(request):
-#    rides = Ride.objects.all()
-#    return render(request, 'rides/index.html', {'rides': rides})
 
 
 def rides_detail(request, ride_id):
@@ -54,3 +50,10 @@ class RideDelete(LoginRequiredMixin, DeleteView):
 def community(request):
     rides = Ride.objects.all().order_by('-date')
     return render(request, 'rides/community.html', { 'rides': rides })
+
+def about(request):
+    return render(request, 'about.html')
+
+
+def about(request):
+    return render(request, 'about.html')

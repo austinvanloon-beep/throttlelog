@@ -14,7 +14,7 @@ It lets riders keep track of their personal rides they enjoy, while also sharing
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 - **Backend**: Django, Python, SQLite (development) / PostgreSQL (production)  
 - **Frontend**: Django templates, HTML5, CSS3 (custom styling)  
 - **Auth**: Django built-in authentication system  
@@ -22,6 +22,6 @@ It lets riders keep track of their personal rides they enjoy, while also sharing
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 Example:
