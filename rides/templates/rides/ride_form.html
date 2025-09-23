@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>{{ view.action|default:"Add" }} Ride</h1>
-
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-  </form>
-
-  <p><a href="{% url 'index' %}">Cancel</a></p>
+  <div class="form-container">
+    <h1>Add a New Ride</h1>
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-fields">
+        {{ form.as_p }}
+      </div>
+      <button type="submit" class="btn add-btn">Save Ride</button>
+    </form>
+  </div>
 {% endblock %}
