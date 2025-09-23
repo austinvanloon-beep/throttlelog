@@ -27,7 +27,8 @@ def rides_detail(request, ride_id):
 
 class RideCreate(LoginRequiredMixin, CreateView):
     model = Ride
-    fields = ['title', 'mileage', 'bike_make', 'bike_model', 'photo', 'attractions', 'notes', 'date']
+    fields = ['title', 'mileage', 'bike_make', 'bike_model', 'photo', 'attractions', 'notes', 'date', 'location']
+
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -35,7 +36,8 @@ class RideCreate(LoginRequiredMixin, CreateView):
 
 class RideUpdate(LoginRequiredMixin, UpdateView):
     model = Ride
-    fields = ['title', 'mileage', 'bike_make', 'bike_model', 'photo', 'attractions', 'notes', 'date']
+    fields = ['title', 'mileage', 'bike_make', 'bike_model', 'photo', 'attractions', 'notes', 'date', 'location']
+
 
     def get_queryset(self):
         return Ride.objects.filter(user=self.request.user)

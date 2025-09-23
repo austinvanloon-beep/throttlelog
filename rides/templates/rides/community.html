@@ -1,24 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>My Rides</h1>
-
-  {% if user.is_authenticated %}
-    <a href="{% url 'rides_create' %}" class="btn add-btn">Add Ride</a>
-  {% endif %}
+<div class="container">
+  <h1>Community Rides</h1>
 
   <div class="ride-grid">
     {% for ride in rides %}
       <div class="ride-card">
-        <h2>{{ ride.title }}</h2>
         {% if ride.photo %}
           <img src="{{ ride.photo }}" alt="Photo of {{ ride.title }}">
         {% endif %}
-        <p><strong>Bike:</strong> {{ ride.bike_make }} {{ ride.bike_model }}</p>
-        <a href="{% url 'detail' ride.id %}" class="btn">View</a>
+        <h2>{{ ride.title }}</h2>
+        <p><strong>By:</strong> {{ ride.user.username }}</p>
+        <p><strong>Mileage:</strong> {{ ride.mileage|default:"N/A" }} miles</p>
+        <a href="{% url 'detail' ride.id %}" class="btn">View Details</a>
       </div>
     {% empty %}
-      <p>No rides yet!</p>
+      <p>No rides have been shared yet!</p>
     {% endfor %}
   </div>
+</div>
 {% endblock %}

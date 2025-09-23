@@ -1,15 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container">
   <div class="ride-detail">
     <h1>{{ ride.title }}</h1>
+
     {% if ride.photo %}
-      <img src="{{ ride.photo }}" alt="Photo of {{ ride.title }}">
+      <img src="{{ ride.photo }}" alt="Photo of {{ ride.title }}" class="ride-photo">
     {% endif %}
-    <p><strong>Mileage:</strong> {{ ride.mileage }} miles</p>
-    <p><strong>Bike:</strong> {{ ride.bike_make }} {{ ride.bike_model }}</p>
-    <p><strong>Attractions:</strong> {{ ride.attractions|default:"None listed" }}</p>
-    <p><strong>Notes:</strong> {{ ride.notes|default:"No notes provided" }}</p>
+
+    <div class="ride-info">
+      <p><strong>Mileage:</strong> {{ ride.mileage }} miles</p>
+      <p><strong>Bike:</strong> {{ ride.bike_make }} {{ ride.bike_model }}</p>
+      <p><strong>Attractions:</strong> {{ ride.attractions|default:"None listed" }}</p>
+      <p><strong>Notes:</strong> {{ ride.notes|default:"No notes provided" }}</p>
+      <p><strong>Date:</strong> {{ ride.date }}</p>
+    </div>
 
     <div class="ride-actions">
       <a href="{% url 'index' %}" class="btn">Back to My Rides</a>
@@ -21,4 +27,5 @@
       {% endif %}
     </div>
   </div>
+</div>
 {% endblock %}

@@ -12,10 +12,13 @@ class Ride(models.Model):
     notes = models.TextField(null=True, blank=True)
     date = models.DateField(null=True, blank=True)
 
+    location = models.CharField(max_length=200, null=True, blank=True)  # ✅ NEW
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
+
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'ride_id': self.id})
