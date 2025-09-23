@@ -7,8 +7,12 @@ from django.views.generic.edit import UpdateView, DeleteView
 
 # rides private to user
 def rides_index(request):
-    rides = Ride.objects.filter(user=request.user)
+    if request.user.is_authenticated:
+        rides = Ride.objects.filter(user=request.user)
+    else:
+        rides = Ride.objects.none()
     return render(request, 'rides/index.html', { 'rides': rides })
+
 
 # rides public to all users
 # def rides_index(request):
@@ -44,3 +48,7 @@ class RideDelete(LoginRequiredMixin, DeleteView):
     def get_queryset(self):
         return Ride.objects.filter(user=self.request.user)
 
+
+def community(request):
+    rides = Ride.objects.all().order_by('-date')
+    return render(request, 'rides/community.html', { 'rides': rides })

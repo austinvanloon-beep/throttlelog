@@ -1,24 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>{{ ride.title }}</h1>
+  <div class="ride-detail">
+    <h1>{{ ride.title }}</h1>
+    {% if ride.photo %}
+      <img src="{{ ride.photo }}" alt="Photo of {{ ride.title }}">
+    {% endif %}
+    <p><strong>Mileage:</strong> {{ ride.mileage }} miles</p>
+    <p><strong>Bike:</strong> {{ ride.bike_make }} {{ ride.bike_model }}</p>
+    <p><strong>Attractions:</strong> {{ ride.attractions|default:"None listed" }}</p>
+    <p><strong>Notes:</strong> {{ ride.notes|default:"No notes provided" }}</p>
 
-  <p><strong>Mileage:</strong> {{ ride.mileage }}</p>
-  <p><strong>Bike:</strong> {{ ride.bike_make }} {{ ride.bike_model }}</p>
-  <p><strong>Date:</strong> {{ ride.date }}</p>
-  <p><strong>Attractions:</strong> {{ ride.attractions }}</p>
-  <p><strong>Notes:</strong> {{ ride.notes }}</p>
+    <div class="ride-actions">
+      <a href="{% url 'index' %}" class="btn">Back to My Rides</a>
+      <a href="{% url 'community' %}" class="btn">Back to Community</a>
 
-  {% if ride.photo %}
-    <img src="{{ ride.photo }}" alt="Photo of {{ ride.title }}" style="max-width:400px;">
-  {% endif %}
-
-  <p><a href="{% url 'index' %}">Back to rides</a></p>
-
-  {% if user == ride.user %}
-    <p>
-      <a href="{% url 'rides_update' ride.id %}">Edit</a> |
-      <a href="{% url 'rides_delete' ride.id %}">Delete</a>
-    </p>
-  {% endif %}
+      {% if user == ride.user %}
+        <a href="{% url 'rides_update' ride.id %}" class="btn edit-btn">Edit</a>
+        <a href="{% url 'rides_delete' ride.id %}" class="btn delete-btn">Delete</a>
+      {% endif %}
+    </div>
+  </div>
 {% endblock %}

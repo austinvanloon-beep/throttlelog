@@ -1,8 +1,13 @@
-<h1>{{ view.action|default:"Add" }} Ride</h1>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Save</button>
-</form>
+{% extends 'base.html' %}
 
-<a href="{% url 'index' %}">Cancel</a>
+{% block content %}
+  <h1>{{ view.action|default:"Add" }} Ride</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+
+  <p><a href="{% url 'index' %}">Cancel</a></p>
+{% endblock %}
