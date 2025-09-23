@@ -2,16 +2,23 @@
 
 {% block content %}
   <h1>{{ ride.title }}</h1>
-  <p>Mileage: {{ ride.mileage }}</p>
-  <p>Bike: {{ ride.bike_make }} {{ ride.bike_model }}</p>
-  <p>Attractions: {{ ride.attractions }}</p>
-  <p>Notes: {{ ride.notes }}</p>
-  <p>Date: {{ ride.date }}</p>
 
-  {% if user == ride.user %}
-    <a href="{% url 'rides_update' ride.id %}">Edit</a>
-    <a href="{% url 'rides_delete' ride.id %}">Delete</a>
+  <p><strong>Mileage:</strong> {{ ride.mileage }}</p>
+  <p><strong>Bike:</strong> {{ ride.bike_make }} {{ ride.bike_model }}</p>
+  <p><strong>Date:</strong> {{ ride.date }}</p>
+  <p><strong>Attractions:</strong> {{ ride.attractions }}</p>
+  <p><strong>Notes:</strong> {{ ride.notes }}</p>
+
+  {% if ride.photo %}
+    <img src="{{ ride.photo }}" alt="Photo of {{ ride.title }}" style="max-width:400px;">
   {% endif %}
 
-  <a href="{% url 'index' %}">Back to all rides</a>
+  <p><a href="{% url 'index' %}">Back to rides</a></p>
+
+  {% if user == ride.user %}
+    <p>
+      <a href="{% url 'rides_update' ride.id %}">Edit</a> |
+      <a href="{% url 'rides_delete' ride.id %}">Delete</a>
+    </p>
+  {% endif %}
 {% endblock %}

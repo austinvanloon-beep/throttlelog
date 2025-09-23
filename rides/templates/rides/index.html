@@ -9,13 +9,19 @@
     <p><a href="{% url 'login' %}">Log in</a> to add rides.</p>
   {% endif %}
 
-  <ul>
-    {% for ride in rides %}
-      <li>
-        <a href="{% url 'detail' ride.id %}">{{ ride.title }}</a>
-      </li>
-    {% empty %}
-      <li>No rides yet!</li>
-    {% endfor %}
-  </ul>
+  {% if rides %}
+    <ul>
+      {% for ride in rides %}
+        <li>
+          <a href="{% url 'detail' ride.id %}">{{ ride.title }}</a>
+          {% if user == ride.user %}
+            | <a href="{% url 'rides_update' ride.id %}">Edit</a>
+            | <a href="{% url 'rides_delete' ride.id %}">Delete</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No rides yet — add your first one!</p>
+  {% endif %}
 {% endblock %}
